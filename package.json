@@ -1,7 +1,7 @@
 {
   "name": "chaaya",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "A small javascript testing library",
   "main": "index.js",
   "bin": {
     "chaaya": "./bin/chaaya"
@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "C5m7b4",
   "license": "ISC",
   "devDependencies": {
     "chalk": "^4.1.2",
