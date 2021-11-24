@@ -18,8 +18,8 @@ function getExtension(filename) {
 
 async function findTestfiles(callback) {
   const dir = __dirname;
-  const testDirectory = path.join(dir, "tests");
-  return await walk(testDirectory);
+  //const testDirectory = path.join(dir, "tests");
+  return await walk(dir);
 }
 
 async function walk(dir) {
