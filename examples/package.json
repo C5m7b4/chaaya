@@ -1,0 +1,12 @@
+{
+  "name": "examples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "chaaya --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
