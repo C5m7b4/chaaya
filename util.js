@@ -1,5 +1,5 @@
-const fs = require("fs").promises;
 const path = require("path");
+const { readdirSync, statSync } = require("fs");
 
 const excludeFiles = [
   ".git",
@@ -16,46 +16,36 @@ function getExtension(filename) {
   return filename.substr(i + 1);
 }
 
-async function findTestfiles(callback) {
+function findTestfiles(callback) {
   const dir = __dirname;
-  //const testDirectory = path.join(dir, "tests");
-  return await walk(dir);
+  const testDirectory = path.join(dir, "tests");
+  return getAllFiles(dir, ".js");
 }
 
-async function walk(dir) {
-  let files = await fs.readdir(dir);
-  files = await Promise.all(
-    files.map(async (file) => {
-      const filePath = path.join(dir, file);
-      const stats = await fs.stat(filePath);
-      if (stats.isDirectory()) return walk(filePath);
-      else if (stats.isFile()) return filePath;
-    })
-  );
+const getAllFiles = (dir, extn, files, result, regex) => {
+  files = files || readdirSync(dir);
+  result = result || [];
+  regex = regex || new RegExp(`\\${extn}$`);
 
-  return files.reduce((all, folderContents) => all.concat(folderContents), []);
-}
+  for (let i = 0; i < files.length; i++) {
+    const filename = files[i];
+    if (!excludeFiles.includes(filename)) {
+      let file = path.join(dir, filename);
+      if (statSync(file).isDirectory()) {
+        try {
+          result = getAllFiles(file, extn, readdirSync(file), result, regex);
+        } catch (error) {
+          continue;
+        }
+      } else {
+        if (regex.test(file)) {
+          result.push(file);
+        }
+      }
+    }
+  }
 
-// function walk(directory, callback) {
-//   fs.readdir(directory, function (err, files) {
-//     if (err) {
-//       throw new Error(err);
-//     }
-//     files.forEach(function (name) {
-//       if (!excludeFiles.includes(name)) {
-//         var filePath = path.join(directory, name);
-//         var stat = fs.statSync(filePath);
-//         if (stat.isFile()) {
-//           var extension = getExtension(filePath);
-//           if (fileExtensions.includes(extension)) {
-//             testFiles.push(filePath);
-//           }
-//         } else if (stat.isDirectory()) {
-//           walk(filePath, callback);
-//         }
-//       }
-//     });
-//   });
-// }
+  return result;
+};
 
 module.exports = { findTestfiles };
