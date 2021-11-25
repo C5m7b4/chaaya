@@ -1,6 +1,6 @@
 const { add } = require("../src/add");
 
-describe.skip("add function", () => {
+describe("add function", () => {
   beforeAll(function () {
     console.log("beforeAll");
   });
@@ -9,6 +9,7 @@ describe.skip("add function", () => {
   });
   beforeEach(function () {
     console.log("beforeEach");
+    const myObj = { name: "testing", age: 1 };
   });
   afterEach(function () {
     console.log("afterEach");
@@ -18,5 +19,14 @@ describe.skip("add function", () => {
   });
   it("should return 4 when given(1,3)", () => {
     expect(add(1, 3)).toBe(5);
+  });
+});
+
+describe.only("only test", () => {
+  it("should return true", () => {
+    expect(true === true).toEqual(true);
+  });
+  it("should return false", () => {
+    expect(false === false).toEqual(false);
   });
 });
