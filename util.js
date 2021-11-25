@@ -1,16 +1,19 @@
 const path = require("path");
 const { readdirSync, statSync } = require("fs");
 
-const config = require("./chaaya.config.json");
+const config = require("./chaaya.config");
 
-const excludeFiles = [
-  ".git",
-  "bin",
-  "node_modules",
-  ".gitignore",
-  "package.json",
-  "package-lock.json",
-];
+const excludeFiles = config["excludeFiles"];
+const fileExtensions = config["extensions"];
+
+function containsExtension(extension) {
+  for (var i = 0; i < fileExtensions.length; i++) {
+    if (fileExtensions[i] === extension) {
+      return true;
+    }
+  }
+  return false;
+}
 
 function findTestfiles(callback) {
   const dir = __dirname;
@@ -19,10 +22,9 @@ function findTestfiles(callback) {
 }
 
 function testFile(filename) {
-  var fileExtensions = config["extensions"];
   var pos = filename.indexOf(".");
   var test = filename.substr(pos + 1);
-  if (fileExtensions.includes(test)) {
+  if (containsExtension(test)) {
     return true;
   } else {
     return false;
@@ -32,8 +34,6 @@ function testFile(filename) {
 const getAllFiles = (dir, extn, files, result, regex) => {
   files = files || readdirSync(dir);
   result = result || [];
-
-  //regex = regex || new RegExp(`\\${extn}$`);
 
   for (let i = 0; i < files.length; i++) {
     const filename = files[i];
