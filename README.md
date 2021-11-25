@@ -11,3 +11,8 @@ npm install chaaya
 # using yarn
 yarn add chaaya
 ```
+
+### Things to do
+
+- Test BeforeEach function
+- Add Before and After Function
