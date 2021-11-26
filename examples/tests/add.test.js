@@ -2,9 +2,6 @@ const { add } = require("../src/add");
 const { divide } = require("../src/divide");
 
 describe("add function", () => {
-  beforeAll(function () {
-    console.log("beforeAll");
-  });
   afterAll(function () {
     console.log("afterAll");
   });
@@ -24,6 +21,10 @@ describe("add function", () => {
 });
 
 describe.only("only test", () => {
+  beforeEach(function () {
+    const myObj = { name: "mike", age: 7 };
+    return myObj;
+  });
   it("should return true", () => {
     expect(true === true).toEqual(true);
   });
