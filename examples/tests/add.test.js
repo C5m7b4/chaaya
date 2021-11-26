@@ -1,4 +1,5 @@
 const { add } = require("../src/add");
+const { divide } = require("../src/divide");
 
 describe("add function", () => {
   beforeAll(function () {
@@ -28,5 +29,11 @@ describe.only("only test", () => {
   });
   it("should return false", () => {
     expect(false === false).toEqual(false);
+  });
+});
+
+describe.only("divide test", () => {
+  it("quotient should be 2", () => {
+    expect(divide(10, 5)).toEqual(2);
   });
 });
