@@ -1,36 +1,30 @@
 const { add } = require("../src/add");
 const { divide } = require("../src/divide");
 
-class TestClass {
-  constructor() {
-    console.log("i hae been created");
-  }
-
-  test() {
-    console.log("test function called");
-  }
-}
+describe("test Truthy function", () => {
+  it("should return true", () => {
+    expect(1 === 1).toBeTruthy();
+  });
+  it("should return true also", () => {
+    expect(1 === 2).toBeTruthy();
+  });
+});
 
 describe("add function", () => {
   it("should return 2 when given (1,1)", () => {
-    expect(add(1, 1)).toEqual(3);
+    expect(add(1, 1)).toEqual(2);
   });
-  it.skip("should return 4 when given(1,3)", () => {
-    expect(add(1, 3)).toBe(5);
+  it("should return 4 when given(1,3)", () => {
+    expect(add(1, 3)).toBe(4);
   });
 });
 
 describe("only test", () => {
-  beforeEach(function () {
-    const myTest = new TestClass();
-    return myTest;
-  });
-  it.skip("should return true", () => {
-    //myTest.test();
+  it("should return true", () => {
     expect(true === true).toEqual(true);
   });
   it("should return false", () => {
-    expect(false === false).toEqual(false);
+    expect(false === false).toEqual(true);
   });
 });
 
