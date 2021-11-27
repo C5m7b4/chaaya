@@ -1,12 +1,21 @@
 const { add } = require("../src/add");
 const { divide } = require("../src/divide");
 
+describe("test Falsy function", () => {
+  it("should return false", () => {
+    expect(1 === 2).toBeFalsy();
+  });
+  it("should return false also", () => {
+    expect(1 === 1).toBeTruthy();
+  });
+});
+
 describe("test Truthy function", () => {
   it("should return true", () => {
     expect(1 === 1).toBeTruthy();
   });
   it("should return true also", () => {
-    expect(1 === 2).toBeTruthy();
+    expect(1 === 2).toBeFalsy();
   });
 });
 
