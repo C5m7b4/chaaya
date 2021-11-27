@@ -4,6 +4,9 @@
   "description": "A small javascript testing library",
   "main": "index.js",
   "entryPoint":"index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "homepage":"https://github.com/C5m7b4/chaaya",
   "repository":{
     "type":"git",
