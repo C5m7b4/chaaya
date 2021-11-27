@@ -5,6 +5,6 @@ describe("Sub Function", () => {
     expect(sub(3, 2)).toEqual(1);
   });
   it("should return 3 when given (9,6)", () => {
-    expect(sub(9, 6)).toEqual(4);
+    expect(sub(9, 6)).toEqual(3);
   });
 });
