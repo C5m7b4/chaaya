@@ -14,8 +14,8 @@ yarn add chaaya
 
 ### Things to do
 
-- Test BeforeEach function
-- Add Before and After Function
-- remove chalk
-- remove esm
-- publish package for real testing
+- ◻ Get arguments working
+- ◻ Get watch argument to work
+- ◻ Get BeforEach/afterEach function working
+- ✅ remove chalk
+- ✅ remove esm
