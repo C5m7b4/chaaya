@@ -16,4 +16,6 @@ yarn add chaaya
 
 - Test BeforeEach function
 - Add Before and After Function
-- Log each skip for it only to that describe block
+- remove chalk
+- remove esm
+- publish package for real testing

@@ -3,17 +3,17 @@
   "version": "0.0.1",
   "description": "A small javascript testing library",
   "main": "index.js",
+  "entryPoint":"index.js",
+  "homepage":"https://github.com/C5m7b4/chaaya",
+  "repository":{
+    "type":"git",
+    "url":"https://github.com/C5m7b4/chaaya"
+  },
   "bin": {
     "chaaya": "./bin/chaaya"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "C5m7b4",
   "license": "ISC",
-  "devDependencies": {
-    "chalk": "^4.1.2",
-    "esm": "^3.2.25"
-  }
+  "devDependencies": {}
 }

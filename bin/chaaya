@@ -1,5 +1,3 @@
 #!/usr/bin/env node
 process.title = "chaaya";
-//require = require("esm")(module /*, options */);
-//require("../lib/cli/cli").cli(process.argv);
 require("../lib/cli/cli").main([], "-watch");
