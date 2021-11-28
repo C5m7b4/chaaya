@@ -1,5 +1,5 @@
 const path = require("path");
-const { readdirSync, statSync } = require("fs");
+const { readdirSync, statSync, watch } = require("fs");
 
 const config = require("./chaaya.config");
 
@@ -57,4 +57,15 @@ const getAllFiles = (dir, extn, files, result, regex) => {
   return result;
 };
 
-module.exports = { findTestfiles };
+function watchFiles(options, callback) {
+  const filePath = __dirname;
+  watch(
+    filePath,
+    { encoding: "utf8", recursive: true },
+    function (event, trigger) {
+      callback(options, filePath, event, trigger);
+    }
+  );
+}
+
+module.exports = { findTestfiles, watchFiles };

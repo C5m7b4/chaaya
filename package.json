@@ -3,14 +3,14 @@
   "version": "0.0.1",
   "description": "A small javascript testing library",
   "main": "index.js",
-  "entryPoint":"index.js",
+  "entryPoint": "index.js",
   "publishConfig": {
     "access": "public"
   },
-  "homepage":"https://github.com/C5m7b4/chaaya",
-  "repository":{
-    "type":"git",
-    "url":"https://github.com/C5m7b4/chaaya"
+  "homepage": "https://github.com/C5m7b4/chaaya",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/C5m7b4/chaaya"
   },
   "bin": {
     "chaaya": "./bin/chaaya"
@@ -18,5 +18,8 @@
   "keywords": [],
   "author": "C5m7b4",
   "license": "ISC",
-  "devDependencies": {}
+  "devDependencies": {},
+  "dependencies": {
+    "arg": "^5.0.1"
+  }
 }
