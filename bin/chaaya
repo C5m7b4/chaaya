@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 process.title = "chaaya";
-process.args = "--watch";
-process.argv.push("--watch");
+// process.args = "--watch";
+// process.argv.push("--watch");
 require("../lib/cli/cli").main(process.argv);
