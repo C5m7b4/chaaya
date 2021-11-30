@@ -5,67 +5,71 @@ const config = require("./chaaya.config");
 
 const excludeFiles = config["excludeFiles"];
 const fileExtensions = config["extensions"];
+const interval = config["interval"];
+const baseUrl = __dirname;
 
-function containsExtension(extension) {
-  for (var i = 0; i < fileExtensions.length; i++) {
-    if (fileExtensions[i] === extension) {
-      return true;
-    }
-  }
-  return false;
-}
+module.exports = { excludeFiles, fileExtensions, interval, baseUrl };
 
-function findTestfiles(callback) {
-  const dir = __dirname;
-  const testDirectory = path.join(dir, "tests");
-  return getAllFiles(dir, ".js");
-}
+// function containsExtension(extension) {
+//   for (var i = 0; i < fileExtensions.length; i++) {
+//     if (fileExtensions[i] === extension) {
+//       return true;
+//     }
+//   }
+//   return false;
+// }
 
-function testFile(filename) {
-  var pos = filename.indexOf(".");
-  var test = filename.substr(pos + 1);
-  if (containsExtension(test)) {
-    return true;
-  } else {
-    return false;
-  }
-}
+// function findTestfiles(callback) {
+//   const dir = __dirname;
+//   const testDirectory = path.join(dir, "tests");
+//   return getAllFiles(dir, ".js");
+// }
 
-const getAllFiles = (dir, extn, files, result, regex) => {
-  files = files || readdirSync(dir);
-  result = result || [];
+// function testFile(filename) {
+//   var pos = filename.indexOf(".");
+//   var test = filename.substr(pos + 1);
+//   if (containsExtension(test)) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
 
-  for (let i = 0; i < files.length; i++) {
-    const filename = files[i];
-    if (!excludeFiles.includes(filename)) {
-      let file = path.join(dir, filename);
-      if (statSync(file).isDirectory()) {
-        try {
-          result = getAllFiles(file, extn, readdirSync(file), result, regex);
-        } catch (error) {
-          console.log(error.msg);
-          continue;
-        }
-      } else {
-        if (testFile(file)) {
-          result.push(file);
-        }
-      }
-    }
-  }
+// const getAllFiles = (dir, extn, files, result, regex) => {
+//   files = files || readdirSync(dir);
+//   result = result || [];
 
-  return result;
-};
+//   for (let i = 0; i < files.length; i++) {
+//     const filename = files[i];
+//     if (!excludeFiles.includes(filename)) {
+//       let file = path.join(dir, filename);
+//       if (statSync(file).isDirectory()) {
+//         try {
+//           result = getAllFiles(file, extn, readdirSync(file), result, regex);
+//         } catch (error) {
+//           console.log(error.msg);
+//           continue;
+//         }
+//       } else {
+//         if (testFile(file)) {
+//           result.push(file);
+//         }
+//       }
+//     }
+//   }
 
-function watchFiles(options, callback) {
-  const filePath = __dirname;
-  watch(
-    filePath,
-    { encoding: "utf8", recursive: true },
-    function (event, trigger) {
-      callback(options, filePath, event, trigger);
-    }
-  );
-}
+//   return result;
+// };
 
-module.exports = { findTestfiles, watchFiles };
+// function watchFiles(options, callback) {
+//   const filePath = __dirname;
+//   watch(
+//     filePath,
+//     { encoding: "utf8", recursive: true },
+//     function (event, trigger) {
+//       callback(options, filePath, event, trigger);
+//     }
+//   );
+// }
+
+// module.exports = { findTestfiles, watchFiles };

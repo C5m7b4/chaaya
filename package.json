@@ -20,6 +20,7 @@
   "license": "ISC",
   "devDependencies": {},
   "dependencies": {
-    "arg": "^5.0.1"
+    "arg": "^5.0.1",
+    "symmetra": "0.0.5"
   }
 }

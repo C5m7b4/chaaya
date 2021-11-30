@@ -8,4 +8,5 @@ module.exports = {
     "package.json",
     "package-lock.json",
   ],
+  interval: 4000,
 };
