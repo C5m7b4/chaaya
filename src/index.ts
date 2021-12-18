@@ -33,9 +33,7 @@ function run(options: Options) {
 }
 
 exports.main = (argv: string[]) => {
-  const message: string = 'Hello';
-  console.log(message);
   let options = parseArgumentsIntoOptions(argv);
   console.log(options);
-  // run(options);
+  run(options);
 };
