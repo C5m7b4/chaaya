@@ -13,6 +13,6 @@
       "watch":true,
       "noImplicitAny": true
   },
-  "exclude":["test", "node_modules"],
+  "exclude":["examples/test", "node_modules"],
   "include":["src", "bin"]
 }
