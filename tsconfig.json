@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+      "target":"es5",
+      "module": "CommonJS",
+      "outDir": "dist",
+      "rootDir": "src",
+      "lib":[
+          "ES2015"
+      ],
+      "sourceMap": true,
+      "esModuleInterop": true,
+      "noEmitOnError": true,
+      "watch":true,
+      "noImplicitAny": true
+  },
+  "exclude":["examples/test", "node_modules"],
+  "include":["src", "bin"]
+}
