@@ -1,12 +1,11 @@
 import { iExpect } from './interfaces';
 import { currIt } from './chaaya';
+const globalAny: any = global;
 
-let passedTests: number = 0;
-let failedTests: number = 0;
+let passedTests = 0;
+let failedTests = 0;
 
-let expect: iExpect;
-
-expect = function (value: any) {
+const expect: iExpect = function (value: any) {
   return {
     toBe: function (expected: any) {
       if (value === expected) {
@@ -81,4 +80,4 @@ const resetFailedTests = () => {
 
 export { expect, passedTests, resetPassedTests, failedTests, resetFailedTests };
 
-global.expect = expect;
+globalAny.expect = expect;
