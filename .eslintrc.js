@@ -10,6 +10,9 @@ module.exports = {
   ],
   rules: {
     '@typescript-eslint/no-var-requires': 0,
+    '@typescript-eslint/no-console': 0,
+    '@typescript-eslint/no-explicit-any': 0,
+    '@typescript-eslint/prefer-const': 0,
     'prettier/prettier': [
       'error',
       {
