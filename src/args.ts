@@ -1,6 +1,7 @@
 const arg = require('arg');
+import { Options } from './interfaces';
 
-const parseArgumentsIntoOptions = (rawArgs: string[]) => {
+const parseArgumentsIntoOptions = (rawArgs: string[]): Options => {
   const args = arg(
     {
       '--watch': Boolean,
