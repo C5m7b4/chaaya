@@ -1,11 +1,11 @@
 const { Watcher } = require('symmetra');
 import parseArgumentsIntoOptions from './args';
 import { Options } from './interfaces';
-import { success, failure } from './indicators';
+import { success } from './indicators';
 import { acceptFileList, detectChange } from './files';
 
-const path = require('path');
-const fs = require('fs');
+// const path = require('path');
+// const fs = require('fs');
 // const { showTestResults } = require('./../');
 
 const { fileExtensions, excludeFiles, interval, baseUrl } = require('../util');
@@ -32,7 +32,7 @@ function run(options: Options) {
 }
 
 exports.main = (argv: string[]) => {
-  let options = parseArgumentsIntoOptions(argv);
+  const options = parseArgumentsIntoOptions(argv);
   console.log(options);
   run(options);
 };
