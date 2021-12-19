@@ -4,13 +4,7 @@ import { Options } from './interfaces';
 import { success } from './indicators';
 import { acceptFileList, detectChange } from './files';
 
-// const path = require('path');
-// const fs = require('fs');
-// const { showTestResults } = require('./../');
-
 const { fileExtensions, excludeFiles, interval, baseUrl } = require('../util');
-
-const log = console.log;
 
 function run(options: Options) {
   success('Testing...');
