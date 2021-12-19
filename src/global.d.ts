@@ -9,15 +9,15 @@ import {
   iSetDryRun,
 } from './interfaces';
 declare global {
-  var describe: iDescribe;
-  var it: iIt;
-  var expect: iExpect;
-  var beforeEach: iBeforeEach;
-  var afterEach: iAfterEach;
-  var beforeAll: iBeforeAll;
-  var afterAll: iAfterAll;
-  var setDryRun: iSetDryRun;
-  var resetStats: () => void;
+  let describe: iDescribe;
+  let it: iIt;
+  let expect: iExpect;
+  let beforeEach: iBeforeEach;
+  let afterEach: iAfterEach;
+  let beforeAll: iBeforeAll;
+  let afterAll: iAfterAll;
+  let setDryRun: iSetDryRun;
+  let resetStats: () => void;
 }
 
 export {};
