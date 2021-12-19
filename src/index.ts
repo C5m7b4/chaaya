@@ -1,3 +1,4 @@
+const { Watcher } = require('symmetra');
 import parseArgumentsIntoOptions from './args';
 import { Options } from './interfaces';
 import { success, failure } from './indicators';
@@ -6,8 +7,6 @@ import { acceptFileList, detectChange } from './files';
 const path = require('path');
 const fs = require('fs');
 // const { showTestResults } = require('./../');
-
-const Watcher = require('symmetra');
 
 const { fileExtensions, excludeFiles, interval, baseUrl } = require('../util');
 
