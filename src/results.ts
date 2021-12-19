@@ -24,8 +24,8 @@ const showTestResults = () => {
   //   log("\n");
   failedTests > 0 ? failureBold('Test Suite') : successBold('Test Suite');
 
-  for (var index = 0; index < stats.length; index++) {
-    var e: CurrentStat = stats[index];
+  for (let index = 0; index < stats.length; index++) {
+    const e: CurrentStat = stats[index];
     const descName = e.name;
     const its = e.it;
     describeName(descName);
@@ -33,16 +33,16 @@ const showTestResults = () => {
       log(`\tskipped ${e.skippedIts.length} its`);
     }
     if (e.warnings.length > 0) {
-      for (var w = 0; w < e.warnings.length; w++) {
+      for (let w = 0; w < e.warnings.length; w++) {
         log(e.warnings[w]);
       }
-      for (var so = 0; so < e.skippedOnlies.length; so++) {
+      for (let so = 0; so < e.skippedOnlies.length; so++) {
         skippedOnly(e.skippedOnlies[so]);
       }
     }
-    for (var i = 0; i < its.length; i++) {
-      var _e = its[i];
-      for (var ii = 0; ii < _e.expects.length; ii++) {
+    for (let i = 0; i < its.length; i++) {
+      const _e = its[i];
+      for (let ii = 0; ii < _e.expects.length; ii++) {
         const expect = _e.expects[ii];
         expect.status === true
           ? success('✔   ' + expect.name)
