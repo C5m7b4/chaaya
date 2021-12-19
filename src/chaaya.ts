@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   CurrDesProps,
   CurrIt,
@@ -11,20 +12,21 @@ import {
 } from './interfaces';
 import { skippedDescribe } from './indicators';
 import { resetPassedTests, resetFailedTests } from './expect';
-const log = console.log;
 
-let beforeEachs = Array();
-let afterEachs = Array();
-let afterAlls = Array();
-let beforeAlls = Array();
+const globalAny: any = global;
+
+const beforeEachs: any[] = [];
+const afterEachs: any[] = [];
+const afterAlls: any[] = [];
+const beforeAlls: any[] = [];
 
 export let totalDescribes = 0;
 export let totalTests = 0;
 
 export let totalDescribesSkipped = 0;
-let totalItsSkipped = 0;
 
 let dryRun = false;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let onlyFunction: any;
 
 export let stats = ([] = []);
@@ -39,29 +41,24 @@ let currDesc: CurrDesProps = {
 
 let currIt: CurrIt = {};
 
-let beforeEach: iBeforeEach;
-beforeEach = function (fn) {
+const beforeEach: iBeforeEach = function (fn) {
   beforeEachs.push(fn);
 };
 
-let afterEach: iAfterEach;
-afterEach = function (fn) {
+const afterEach: iAfterEach = function (fn) {
   afterEachs.push(fn);
 };
 
-let beforeAll: iBeforeAll;
-beforeAll = function (fn) {
+const beforeAll: iBeforeAll = function (fn) {
   beforeAlls.push(fn);
   currDesc.beforeAll = fn;
 };
 
-let afterAll: iAfterAll;
-afterAll = function (fn) {
+const afterAll: iAfterAll = function (fn) {
   afterAlls.push(fn);
 };
 
-let setDryRun: iSetDryRun;
-setDryRun = function (value) {
+const setDryRun: iSetDryRun = function (value) {
   dryRun = value;
 };
 
@@ -71,11 +68,10 @@ function resetStats() {
   resetPassedTests(), resetFailedTests(), (stats = []);
 }
 
-let it: iIt;
-it = function (this, desc, fn) {
+const it: iIt = function (this, desc, fn) {
   totalTests++;
   if (beforeEachs) {
-    for (var index = 0; index < beforeEachs.length; index++) {
+    for (let index = 0; index < beforeEachs.length; index++) {
       beforeEachs[index].apply(this);
     }
   }
@@ -86,7 +82,7 @@ it = function (this, desc, fn) {
   };
 
   fn.apply(this);
-  for (var index = 0; index < afterEachs.length; index++) {
+  for (let index = 0; index < afterEachs.length; index++) {
     afterEachs[index].apply(this);
   }
 
@@ -94,15 +90,12 @@ it = function (this, desc, fn) {
 };
 
 it.skip = function (desc: string, fn: any) {
-  totalItsSkipped++;
   totalTests++;
   currDesc.skippedIts.push(desc);
   skippedDescribe(desc);
 };
 
-let describe: iDescribe;
-
-describe = function (this, desc, fn) {
+const describe: iDescribe = function (this, desc, fn) {
   if (dryRun) {
     return;
   } else {
@@ -122,21 +115,21 @@ describe = function (this, desc, fn) {
     skippedIts: [],
   };
 
-  for (var index = 0; index < beforeAlls.length; index++) {
+  for (let index = 0; index < beforeAlls.length; index++) {
     beforeAlls[index].apply(this);
   }
 
   currDesc.name = desc;
   fn.apply(this);
 
-  for (var index = 0; index < afterAlls.length; index++) {
+  for (let index = 0; index < afterAlls.length; index++) {
     afterAlls[index].apply(this);
   }
 
   //stats.push(currDesc);
 };
 
-describe.skip = function (desc: string, fn: any) {
+describe.skip = function (desc: string) {
   totalDescribes++;
   totalDescribesSkipped++;
   skippedDescribe(desc);
@@ -163,13 +156,13 @@ describe.only = function (desc: string, fn: any) {
 
 export { currIt };
 
-global.describe = describe;
-global.it = it;
-global.beforeEach = beforeEach;
-global.afterEach = afterEach;
-global.beforeAll = beforeAll;
-global.afterAll = afterAll;
-global.setDryRun = setDryRun;
-global.resetStats = resetStats;
+globalAny.describe = describe;
+globalAny.it = it;
+globalAny.beforeEach = beforeEach;
+globalAny.afterEach = afterEach;
+globalAny.beforeAll = beforeAll;
+globalAny.afterAll = afterAll;
+globalAny.setDryRun = setDryRun;
+globalAny.resetStats = resetStats;
 
 export { describe };
